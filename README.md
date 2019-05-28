@@ -2,15 +2,15 @@
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
 This module displays Pittsburgh bus data from Port Authority for chosen bus routes and bus stops, including:
-(1) chosen bus route
-(2) arrival time
-(3) remaining minutes to arrival time
-(4) bus direction(inbound/outbound)
-(5) chosen bus stop(name)
-(6) bus destination
+1. chosen bus route
+2. arrival time
+3. remaining minutes to arrival time
+4. bus direction(inbound/outbound)
+5. chosen bus stop(name)
+6. bus destination
 
-![alt text](https://github.com/yuhanx0728/MMM-PGHBus/screenshots/default.png "Default")
-![alt text](https://github.com/yuhanx0728/MMM-PGHBus/screenshots/verbose.png "Verbose")
+![Default screenshot](https://github.com/yuhanx0728/MMM-PGHBus/default.png)
+![Verbose screenshot](https://github.com/yuhanx0728/MMM-PGHBus/verbose.png)
 
 ## Installation
 1. Add MMM-PGHBus to your 'MagicMirror/modules' directory
