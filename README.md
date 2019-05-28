@@ -9,8 +9,8 @@ This module displays Pittsburgh bus data from Port Authority for chosen bus rout
 5. chosen bus stop(name)
 6. bus destination
 
-![Default screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/default.png)
-![Verbose screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/verbose.png)
+![Default screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/default.png =250x)
+![Verbose screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/verbose.png =250x)
 
 ## Installation
 1. Add MMM-PGHBus to your 'MagicMirror/modules' directory
