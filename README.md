@@ -1,7 +1,7 @@
 # MMM-PGHBus
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
-This module displays Pittsburgh bus data from Port Authority for chosen bus routes and bus stops, including:
+This module displays real time Pittsburgh bus information from Port Authority for chosen bus routes and bus stops, including:
 1. chosen bus route
 2. arrival time
 3. remaining minutes to arrival time
