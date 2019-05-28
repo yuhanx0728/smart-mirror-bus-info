@@ -58,6 +58,7 @@ module.exports = NodeHelper.create({
         }, (error, response, body) => {
 
             var result = {};
+            var busStopPair = bus+"-"+stop;
             
             if (!error && response.statusCode == 200) {
                     
@@ -74,25 +75,27 @@ module.exports = NodeHelper.create({
                         result["min"] = this.getRemainingMinutes(data_to_pass_in);
                         result["dir"] = this.getDirection(data_to_pass_in);
                         result["des"] = this.getDestination(data_to_pass_in);
-                        this.sendSocketNotification(bus, result);
+                        console.log("here we go");
+                        console.log(result);
+                        this.sendSocketNotification(busStopPair, result);
                     }
                     else {
                         console.log(this.name + ": unable to parse JSON response(prd)");
                         console.log(raw_response["bustime-response"]["error"]);
                         // console.log(raw_response["bustime-response"]["error"]["msg"]);
-                        this.sendSocketNotification(bus, this.noBusInfo(bus, stop));
+                        this.sendSocketNotification(busStopPair, this.noBusInfo(bus, stop));
                     }
                 }
                 else {
                     console.log(this.name + ": unable to parse JSON response(bustime-response)");
-                    this.sendSocketNotification(bus, this.noBusInfo(bus, stop));
-                }		
+                    this.sendSocketNotification(busStopPair, this.noBusInfo(bus, stop));
+                }
             }
             else {
                 console.log(this.name + ": unable to connect to API, error msg is below: ");
                 console.log(error);
                 console.log(response);
-                this.sendSocketNotification(bus, this.noBusInfo(bus, stop));
+                this.sendSocketNotification(busStopPair, this.noBusInfo(bus, stop));
             }
         });
     },
@@ -106,16 +109,32 @@ module.exports = NodeHelper.create({
         return url;
     },
 
+
+    getBusFromPair: function(pair) {
+        var i = pair.indexOf("-");
+        return pair.slice(0,i);
+    },
+
+
+    getStopFromPair: function(pair) {
+        var i = pair.indexOf("-");
+        return pair.slice(i+1);
+    },
+
+
     // this calls getBus to send individual bus data from api call to MMM-PGHBus.js
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'GET_BUS') {
             this.key = payload["key"];
-            this.buses = payload["buses"];
-            this.stopIds = payload["stopIds"];
+            this.busStopPairs = payload["busStopPairs"];
             var url = "";
-            for (i = 0; i < this.buses.length; i ++) {
-                url = this.makeURL(this.buses[i], this.stopIds[i]);
-                this.getBusInfo(url, this.buses[i], this.stopIds[i]);
+            var thisBus = "";
+            var thisStop = "";
+            for (i = 0; i < this.busStopPairs.length; i ++) {
+                thisBus = this.getBusFromPair(this.busStopPairs[i]);
+                thisStop = this.getStopFromPair(this.busStopPairs[i]);
+                url = this.makeURL(thisBus, thisStop);
+                this.getBusInfo(url, thisBus, thisStop);
             };
         }
     }
