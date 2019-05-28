@@ -44,9 +44,9 @@ module.exports = NodeHelper.create({
 
     noBusInfo: function(bus, stop) {
         var result = {  "time": "N/A", "min": "N/A", 
-                        "dir": "Unknown Direction", "des": "Unknown Destination",
+                        "dir": "N/A", "dest": "N/A",
                         "bus": bus,
-                        "stop": "StopID: " + stop};
+                        "stop": "ID: " + stop};
         return result;
     },
     
@@ -74,9 +74,8 @@ module.exports = NodeHelper.create({
                         result["time"] = this.getArrivalTime(data_to_pass_in);
                         result["min"] = this.getRemainingMinutes(data_to_pass_in);
                         result["dir"] = this.getDirection(data_to_pass_in);
-                        result["des"] = this.getDestination(data_to_pass_in);
-                        console.log("here we go");
-                        console.log(result);
+                        result["dest"] = this.getDestination(data_to_pass_in);
+                        // console.log(result);
                         this.sendSocketNotification(busStopPair, result);
                     }
                     else {

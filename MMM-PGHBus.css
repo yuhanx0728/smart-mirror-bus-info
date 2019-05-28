@@ -9,22 +9,33 @@
   text-align: left;           /* Align header text. (left, center, right) */
 }
 
-.MMM-PGHBus .shape {
+.MMM-PGHBus table {
+  width: 100%;
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+.MMM-PGHBus th {
   color: white;               /* Color the shape. Default is white. */
+  text-align: center;
+  font-family: Roboto Condensed;
 }
 
-.MMM-PGHBus .date {
-  color: white;               /* Color the date. Default is white. */
+.MMM-PGHBus td {
+  color: white;               /* Color the shape. Default is white. */
+  text-align: center;
+  padding-bottom: 5px;
+  font-size: 18px;
 }
 
-.MMM-PGHBus .cityState {
-  color: white;               /* Color the cityState. Default is white. */
+.MMM-PGHBus .bus {
+  color: yellow;               /* Color the shape. Default is white. */
 }
 
-.MMM-PGHBus .duration {
-  color: white;               /* Color possible duration. Default is white. */
+.MMM-PGHBus .dest {
+  font-size: 12px;
 }
 
-.MMM-PGHBus .summary {
-  color: white;               /* Color possible summary. Default is white. */
+.MMM-PGHBus .stop {
+  font-size: 12px;
 }

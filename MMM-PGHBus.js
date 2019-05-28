@@ -4,7 +4,8 @@ Module.register("MMM-PGHBus", {
     defaults: {
         useHeader: true,           // false if you don't want a header
         header: "Pittsburgh Buses", 
-        maxWidth: "250px",
+        maxWidth: "450px",
+        verbose: false,            // show destination and stop name/ID if true
         key: null,
         busStopPairs: [],          // an array of "bus-stopId", e.g. "61D-8789"
         updateInterval: 45 * 1000, // update speed in ms
@@ -48,47 +49,73 @@ Module.register("MMM-PGHBus", {
             wrapper.appendChild(header);
         }
 
-        var grid = document.createElement("div");
-        grid.classList.add("xsmall", "bright", "light", "grid", "grid-container");
-        wrapper.appendChild(grid);
-      
+        var table = document.createElement("table");
+        table.classList.add("xsmall", "bright", "light");
+        wrapper.appendChild(table);
+
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+
+        var labels = ["Bus", "(min)", "  ", "    "];
+        if (this.config.verbose != false) {
+            var labels = ["Bus", "(min)", "  ", "    ", "Stop", "Dest"];
+        }
+
+        for (i = 0; i < labels.length; i ++) {
+            var th = document.createElement("th");
+            th.classList.add("xsmall", "bright");
+            th.innerHTML = labels[i];
+            tr.appendChild(th);
+        };
+
         var keys = Object.keys(this.busStopPairDict);
         var newBus = null;
 
         // updating the HTML for each bus
         for (i = 0; i < keys.length; i ++) {
             
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
             newBus = this.busStopPairDict[keys[i]];
 
-            var bus = document.createElement("div");
-            bus.classList.add("xsmall", "bright", "grid-item", "bus");
+            // bus from newBus
+            var bus = document.createElement("td");
+            bus.classList.add("xsmall", "bright", "bus");
             bus.innerHTML = newBus["bus"];
-            grid.appendChild(bus);
+            tr.appendChild(bus);
 
-            // bus from data
-            var stop = document.createElement("div");
-            stop.classList.add("xsmall", "bright", "grid-item", "stop");
-            stop.innerHTML = newBus["stop"];
-            grid.appendChild(stop);
+            // remainingMinutes from newBus
+            var remainingMinutes = document.createElement("td");
+            remainingMinutes.classList.add("xsmall", "bright", "remainingMinutes");
+            remainingMinutes.innerHTML = newBus["min"];
+            tr.appendChild(remainingMinutes);
 
-            // direction-destination from data
-            var dirDes = document.createElement("div");
-            dirDes.classList.add("xsmall", "bright", "grid-item", "direction-destination");
-            dirDes.innerHTML = newBus["dir"] + " - "+ newBus["des"];
-            grid.appendChild(dirDes);
-        
-            // arrivalTime from data
-            var arrivalTime = document.createElement("div");
-            arrivalTime.classList.add("xsmall", "bright", "grid-item", "arrivalTime");
-            arrivalTime.innerHTML = "Predicted Arrival Time: " + newBus["time"];
-            grid.appendChild(arrivalTime);
+            // arrivalTime from newBus
+            var arrivalTime = document.createElement("td");
+            arrivalTime.classList.add("xsmall", "bright", "arrivalTime");
+            arrivalTime.innerHTML = newBus["time"];
+            tr.appendChild(arrivalTime);
+
+            // direction from newBus
+            var dir = document.createElement("td");
+            dir.classList.add("xsmall", "bright", "dir");
+            dir.innerHTML = newBus["dir"];
+            tr.appendChild(dir);
+
+            if (this.config.verbose != false) {
+                // stop from newBus
+                var stop = document.createElement("td");
+                stop.classList.add("xsmall", "bright", "stop");
+                stop.innerHTML = newBus["stop"];
+                tr.appendChild(stop);
+
+                // destination from newBus
+                var dest = document.createElement("td");
+                dest.classList.add("xsmall", "bright", "dest");
+                dest.innerHTML = newBus["dest"];
+                tr.appendChild(dest);
+            }
           
-            // remainingMinutes from data
-            var remainingMinutes = document.createElement("div");
-            remainingMinutes.classList.add("xsmall", "bright", "grid-item", "remainingMinutes");
-            remainingMinutes.innerHTML = newBus["min"] + " minutes remaining";
-            grid.appendChild(remainingMinutes);
-
         };
 
         return wrapper;
