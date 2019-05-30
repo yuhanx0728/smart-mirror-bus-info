@@ -27,7 +27,7 @@ modules: [
         module: 'MMM-PGHBus',
         position: 'top_left',
         config: {
-            key: "8NAuMkVvD3kDkV6fJzFj4AhJG",  // get developer API key from https://truetime.portauthority.org/bustime/home.jsp
+            key: "",  // get developer API key from https://truetime.portauthority.org/bustime/home.jsp
             busStopPairs: []        // add as many "bus-stopID"s as you want, e.g."71C-2573", "71A-2573", "71A-2633"; stopID can be found on Google Map, 
             useHeader: true,                   // optional, default true
             header: "When Do Buses Come",      // optional
