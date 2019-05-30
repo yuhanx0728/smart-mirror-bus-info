@@ -13,14 +13,14 @@ This module displays real time Pittsburgh bus information from Port Authority fo
 ![Verbose screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/verbose.png)
 
 ## Installation
-1. Add MMM-PGHBus to your 'MagicMirror/modules' directory
+1. Add MMM-PGHBus to your ```MagicMirror/modules``` directory
 ```
 cd ~/MagicMirror/modules
 git clone https://github.com/yuhanx0728/MMM-PGHBus/
 cd MMM-PGHBus/
 npm install
 ```
-2. Configure your 'MagicMirror/config/congfig.js' file
+2. Configure your ```MagicMirror/config/congfig.js``` file
 ```
 modules: [
     {
