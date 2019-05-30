@@ -28,13 +28,13 @@ modules: [
         position: 'top_left',
         config: {
             key: "",  // get developer API key from https://truetime.portauthority.org/bustime/home.jsp
-            busStopPairs: []        // add as many "bus-stopID"s as you want, e.g."71C-2573", "71A-2573", "71A-2633"; stopID can be found on Google Map, 
+            busStopPairs: [],       // add as many "bus-stopID"s as you want, e.g."71C-2573", "71A-2573", "71A-2633"; stopID can be found on Google Map
             useHeader: true,                   // optional, default true
             header: "When Do Buses Come",      // optional
             verbose: false,                    // optional, default false
             maxWidth: "450px",                 // optional, default 450px
             updateInterval: 45 * 1000,         // bus schedule update speed, optional, default 45s
-            animationSpeed: 3000,              // fade in & fade out speed, optional, default 3s
+            animationSpeed: 3000              // fade in & fade out speed, optional, default 3s
         }
     }
 ]
