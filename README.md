@@ -1,4 +1,4 @@
-# MMM-PGHBus
+# Project description
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
 This module displays real time Pittsburgh bus information from Port Authority for chosen bus routes and bus stops, including:
@@ -12,7 +12,11 @@ This module displays real time Pittsburgh bus information from Port Authority fo
 ![Default screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/default.png)
 ![Verbose screenshot](https://github.com/yuhanx0728/MMM-PGHBus/blob/master/verbose.png)
 
-## Installation
+# Tech stack
+
+Javascript, Node.js
+
+# How to run on your Magic Mirror
 1. Add MMM-PGHBus to your ```MagicMirror/modules``` directory
 ```
 cd ~/MagicMirror/modules
