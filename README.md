@@ -1,7 +1,7 @@
 # Project description
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module I made for the [MagicMirror²](https://github.com/MichMich/MagicMirror/), an open source modular smart mirror platform.
 
-This module displays real time Pittsburgh bus information from Port Authority for chosen bus routes and bus stops, including:
+It displays real time Pittsburgh bus information from Port Authority for chosen bus routes and bus stops, including:
 1. chosen bus route
 2. arrival time
 3. remaining minutes to arrival time
