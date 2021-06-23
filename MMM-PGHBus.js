@@ -23,7 +23,9 @@ Module.register("MMM-PGHBus", {
 
         this.busStopPairDict = {};
         this.bus = null;
-        this.getBuses();       // set intervals for bus schedule to update
+        setInterval(() => {
+            this.getBuses();       // set intervals for bus schedule to update
+        }, this.config.updateInterval);
     },
 
 
